@@ -8,12 +8,15 @@ const fibs = function (n) {
   return sequence;
 };
 
-console.log(fibs(1));
-console.log(fibs(2));
-console.log(fibs(3));
-console.log(fibs(4));
-console.log(fibs(5));
-console.log(fibs(6));
-console.log(fibs(7));
-console.log(fibs(8));
-const fibsRec = function () {};
+const fibsRec = function (n) {
+  if (n <= 0) return [];
+  if (n === 1) return [0];
+  if (n === 2) return [0, 1];
+  const fib = fibsRec(n - 1);
+  const currentNum = fib.at(-1) + fib.at(-2);
+
+  fib.push(currentNum);
+  return fib;
+};
+
+console.log(fibsRec(8));
